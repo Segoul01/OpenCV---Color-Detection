@@ -1,23 +1,39 @@
 # importing modules
 import cv2
-import os
-
-# Reading Video
-video_path = os.path.join('.', 'data', 'vid.mp4')
-video = cv2.VideoCapture(video_path)
 
 
-# Visualizing Video
-ret = True
-while ret:
-    ret, frame = video.read()
+# Reading Webcam
+webcam = cv2.VideoCapture(0)
 
-    # Displaying the frame
-    cv2.imshow('video', frame)
-    cv2.waitKey(33)
 
-video.release()
+# Visualizing Webcam
+while True:
+    ret, frame = webcam.read()
+
+    cv2.imshow('Webcam', frame)
+    if (cv2.waitKey(20) & 0xFF == ord('q')):
+        break
+
+
+webcam.release()
 cv2.destroyAllWindows()
+
+# # Reading Video
+# video_path = os.path.join('.', 'data', 'vid.mp4')
+# video = cv2.VideoCapture(video_path)
+
+
+# # Visualizing Video
+# ret = True
+# while ret:
+#     ret, frame = video.read()
+
+#     # Displaying the frame
+#     cv2.imshow('video', frame)
+#     cv2.waitKey(33)
+
+# video.release()
+# cv2.destroyAllWindows()
 
 # # reading image
 # image_path = os.path.join('.', 'data', 'test-img.png')
